@@ -1,0 +1,42 @@
+name: Build Extension
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm run build:prod
+
+      - name: Package extension
+        run: |
+          mkdir -p artifact/in-out-extension/popup
+          cp manifest.json artifact/in-out-extension/
+          cp -r dist artifact/in-out-extension/
+          cp -r icons artifact/in-out-extension/
+          cp popup/popup.html popup/popup.css artifact/in-out-extension/popup/
+          cp PRIVACY_POLICY.md artifact/in-out-extension/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: in-out-extension
+          path: artifact/in-out-extension
+          retention-days: 90

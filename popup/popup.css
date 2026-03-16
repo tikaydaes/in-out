@@ -1,0 +1,396 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  color: #191919;
+  background: #f8f9fa;
+  width: 380px;
+  padding: 16px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #191919;
+}
+
+.version-badge {
+  font-size: 11px;
+  color: #666666;
+  background: #e0e0e0;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.mode-section,
+.company-section,
+.manual-list-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.manual-company-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #191919;
+}
+
+.select,
+.input,
+.textarea {
+  width: 100%;
+  padding: 0 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #191919;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.select,
+.input {
+  height: 36px;
+}
+
+.textarea {
+  padding: 8px 12px;
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+}
+
+.select:focus,
+.input:focus,
+.textarea:focus {
+  border-color: #0a66c2;
+  box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.1);
+}
+
+.textarea::placeholder {
+  color: #999999;
+  line-height: 1.5;
+}
+
+.help-text {
+  font-size: 11px;
+  color: #666666;
+  margin-top: -4px;
+}
+
+.error-message {
+  padding: 8px 12px;
+  background: #fff5f5;
+  border: 1px solid #cc1016;
+  border-radius: 6px;
+  color: #cc1016;
+  font-size: 12px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  flex: 1;
+  height: 36px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-primary {
+  background: #0a66c2;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #084d94;
+}
+
+.btn-primary:active {
+  background: #073d75;
+}
+
+.btn-danger {
+  background: #cc1016;
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background: #a00d12;
+}
+
+.btn-danger:active {
+  background: #7d0a0e;
+}
+
+.progress-section {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: #191919;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #0a66c2;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  width: 0%;
+}
+
+.progress-bar.indeterminate {
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    #e0e0e0 0%,
+    #0a66c2 50%,
+    #e0e0e0 100%
+  );
+  background-size: 200% 100%;
+  animation: indeterminate 1.5s linear infinite;
+}
+
+@keyframes indeterminate {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.stats-text {
+  font-size: 12px;
+  color: #666666;
+}
+
+.export-section {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.export-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.export-count {
+  font-size: 13px;
+  font-weight: 500;
+  color: #057642;
+}
+
+.footer {
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #666666;
+}
+
+.cache-stats {
+  font-size: 11px;
+  color: #666666;
+}
+
+.cache-clear {
+  font-size: 11px;
+  color: #0a66c2;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cache-clear:hover {
+  text-decoration: underline;
+}
+
+.status-indicator {
+  font-size: 11px;
+  color: #666666;
+}
+
+.consent-gate {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.consent-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.consent-heading {
+  font-size: 15px;
+  font-weight: 600;
+  color: #191919;
+}
+
+.consent-intro {
+  font-size: 12px;
+  color: #666666;
+  line-height: 1.5;
+}
+
+.consent-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.consent-section {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.consent-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #191919;
+  margin-bottom: 6px;
+}
+
+.consent-section-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.consent-section-item {
+  font-size: 11px;
+  color: #444444;
+  line-height: 1.4;
+  padding-left: 12px;
+  position: relative;
+}
+
+.consent-section-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #0a66c2;
+}
+
+.consent-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.consent-privacy-link {
+  font-size: 11px;
+  color: #0a66c2;
+  text-decoration: none;
+  text-align: center;
+}
+
+.consent-privacy-link:hover {
+  text-decoration: underline;
+}
+
+.consent-accept-btn {
+  width: 100%;
+}
+
+.hidden {
+  display: none !important;
+}

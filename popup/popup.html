@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>in⇄out</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="consent-gate" class="container consent-gate hidden">
+    <header class="header">
+      <div class="title-row">
+        <img src="../icons/title-icon.png" alt="" class="title-icon" width="24" height="24">
+        <h1 class="title">in⇄out</h1>
+      </div>
+      <span id="consent-version-badge" class="version-badge"></span>
+    </header>
+
+    <div class="consent-content">
+      <h2 class="consent-heading" id="consent-heading"></h2>
+      <p class="consent-intro" id="consent-intro"></p>
+      <div id="consent-sections" class="consent-sections"></div>
+    </div>
+
+    <footer class="consent-footer">
+      <a id="consent-privacy-link" class="consent-privacy-link" href="#" target="_blank" rel="noopener"></a>
+      <button id="consent-accept-btn" class="btn btn-primary consent-accept-btn"></button>
+    </footer>
+  </div>
+
+  <div id="main-app" class="container hidden">
+    <header class="header">
+      <div class="title-row">
+        <img src="../icons/title-icon.png" alt="" class="title-icon" width="24" height="24">
+        <h1 class="title">in⇄out</h1>
+      </div>
+      <span id="version-badge" class="version-badge"></span>
+    </header>
+
+    <section class="mode-section">
+      <label for="mode-select" class="label">Export Type</label>
+      <select id="mode-select" class="select">
+        <option value="connections">My Connections</option>
+        <option value="company-followers">Company Followers</option>
+        <option value="followers">My Followers</option>
+        <option value="following">People I Follow</option>
+        <option value="manual-list">Manual List</option>
+      </select>
+    </section>
+
+    <section id="company-section" class="company-section hidden">
+      <label for="company-select" class="label">Company</label>
+      <select id="company-select" class="select">
+        <option value="" disabled selected>Loading companies...</option>
+      </select>
+      <div id="manual-company-section" class="manual-company-section hidden">
+        <label for="company-input" class="label">Company LinkedIn ID or Slug</label>
+        <input
+          type="text"
+          id="company-input"
+          class="input"
+          placeholder="e.g., microsoft or 1234567"
+        >
+      </div>
+    </section>
+
+    <section id="manual-list-section" class="manual-list-section hidden">
+      <label for="manual-list-input" class="label">Names and Companies</label>
+      <textarea
+        id="manual-list-input"
+        class="textarea"
+        placeholder="Paste one person per line&#10;Format: Name, Company&#10;&#10;Example:&#10;John Smith, Microsoft&#10;Jane Doe, Google&#10;Bob Jones, Amazon"
+        rows="8"
+      ></textarea>
+      <p class="help-text">Enter one person per line in the format: Name, Company</p>
+    </section>
+
+    <div id="error-message" class="error-message hidden"></div>
+
+    <section class="actions">
+      <button id="start-btn" class="btn btn-primary">Start Export</button>
+      <button id="stop-btn" class="btn btn-danger hidden">Stop Export</button>
+    </section>
+
+    <section id="progress-section" class="progress-section hidden">
+      <div class="progress-header">
+        <span id="progress-text" class="progress-text">Ready to export</span>
+      </div>
+      <div class="progress-bar-container">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+      <p id="stats-text" class="stats-text">0 of 0 scraped • 0 domains resolved</p>
+    </section>
+
+    <section id="export-section" class="export-section hidden">
+      <div class="export-header">
+        <span id="export-count" class="export-count">0 records ready to export</span>
+      </div>
+      <button id="export-btn" class="btn btn-primary">Download JSONL</button>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-row">
+        <span id="cache-stats" class="cache-stats">0 domains cached</span>
+        <a href="#" id="cache-clear" class="cache-clear">Clear Cache</a>
+      </div>
+      <div class="footer-row">
+        <span id="status-indicator" class="status-indicator">• Ready</span>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="../dist/popup.js"></script>
+</body>
+</html>

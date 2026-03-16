@@ -1,0 +1,16 @@
+{
+  "name": "in-out",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsx build.ts",
+    "build:prod": "NODE_ENV=production tsx build.ts"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.268",
+    "esbuild": "^0.20.2",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.2"
+  }
+}
