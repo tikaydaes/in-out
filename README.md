@@ -32,21 +32,20 @@ See [PRIVACY_POLICY.md](PRIVACY_POLICY.md) for the full privacy and data disclos
 
 ## Installing the Extension
 
-The extension is built and packaged automatically by GitHub Actions on every push to `main`.
+The extension is built and packaged automatically on every push to `main`. Each build creates a GitHub release with a downloadable zip.
 
-### Download the Build Artifact
+### Download from Releases
 
-1. Go to the [Actions tab](../../actions) of this repository.
-2. Click the most recent successful **Build Extension** workflow run.
-3. Under **Artifacts**, download `in-out-extension`.
-4. Unzip the downloaded file — it contains the packaged extension folder.
+1. Go to the [Releases](../../releases) page of this repository.
+2. Download the latest `in-out-extension-v*.zip` file.
+3. Unzip the downloaded file — it contains the packaged extension folder.
 
 ### Load into Chrome
 
 1. Open Chrome and navigate to `chrome://extensions`.
 2. Enable **Developer mode** using the toggle in the top-right corner.
 3. Click **Load unpacked**.
-4. Select the unzipped extension folder (the one containing `manifest.json`).
+4. Select the unzipped `in-out-extension` folder (the one containing `manifest.json`).
 5. The extension icon will appear in your toolbar. Pin it for easy access.
 
 ### Usage

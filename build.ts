@@ -1,14 +1,6 @@
 import * as esbuild from 'esbuild';
-import { readFileSync, writeFileSync } from 'node:fs';
 
 const production = process.env.NODE_ENV === 'production';
-
-const manifestPath = new URL('./manifest.json', import.meta.url).pathname;
-const manifest = JSON.parse(readFileSync(manifestPath, 'utf-8'));
-const [major, minor, patch] = manifest.version.split('.').map(Number);
-manifest.version = `${major}.${minor}.${patch + 1}`;
-writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
-console.log(`Version bumped to ${manifest.version}`);
 
 const commonConfig: esbuild.BuildOptions = {
   bundle: true,
