@@ -26,6 +26,12 @@ jobs:
 
       - run: pnpm run build:prod
 
+      - name: Read version from manifest
+        id: version
+        run: |
+          VERSION=$(node -p "require('./manifest.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
       - name: Package extension
         run: |
           mkdir -p artifact/in-out-extension/popup
@@ -40,3 +46,23 @@ jobs:
           name: in-out-extension
           path: artifact/in-out-extension
           retention-days: 90
+
+      - name: Create release zip
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          cd artifact
+          zip -r ../in-out-extension-v${{ steps.version.outputs.version }}.zip in-out-extension/
+
+      - name: Create GitHub release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          TAG="v${VERSION}"
+          gh release create "$TAG" \
+            --title "in↔out $TAG" \
+            --notes "Automated build of in↔out extension $TAG. Download the zip, unzip, and load as an unpacked extension in Chrome." \
+            --latest \
+            "in-out-extension-v${VERSION}.zip" \
+            || echo "Release $TAG already exists, skipping"
