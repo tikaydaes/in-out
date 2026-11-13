@@ -64,3 +64,7 @@ pnpm run build
 ```
 
 The built files will be in the `dist/` directory. Load the entire project folder as an unpacked extension in Chrome.
+
+## License
+
+AGPL-3.0. See [LICENSE](LICENSE).
